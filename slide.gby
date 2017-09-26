@@ -1,9 +1,26 @@
 []xwidgetで遊ぶ
 [-]
+ 
+ 
+ 
+ 
+[]2017/10/28
+[]Emacs実践入門 出版記念イベント
+[]@grugrut(ぐるっと)
+
+Who are you?
+[-]
+大学1年のときに講義で素のEmacsでJavaのコードを書かされたときにEmacsと出会う
+	こんなエディタ二度と使うものか
 
-2017/10/28
-Emacs実践入門 出版記念イベント
-@grugrut
+研究室に配属されて、TeXを書くのにEmacsに戻ってくる
+	yatexとhowmは神
+
+現在都内SIer勤務
+	org-modeは神
 
 xwidgetとは
 [-]
+
+Emacs 25でマージされたNative WidgetをEmacsのバッファに埋め込むことができる機能
+
