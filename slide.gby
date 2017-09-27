@@ -24,3 +24,4 @@ xwidgetとは
 
 Emacs 25でマージされたNative WidgetをEmacsのバッファに埋め込むことができる機能
 
+Emacs25では、Webブラウザの埋め込みに使われている
