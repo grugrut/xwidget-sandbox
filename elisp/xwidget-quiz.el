@@ -20,6 +20,32 @@
 
 ;;; Code:
 
+(require 'xwidget)
+(defun xwidget-quiz ()
+  "show quiz"
+  (interactive)
+  (switch-to-buffer "*xwidget-quiz*")
+  (text-mode)
+  (text-scale-set 10)
+  (insert "                        ")
+  (goto-char (point-min))
+  (insert "問題\nこれはemacs25で動く\n")
+  (forward-char 1)
+  (setq-local maru-button (xwidget-insert (point) 'Button "○" 200 200))
+  (forward-char 6)
+  (setq-local batu-button (xwidget-insert (point) 'Button "×" 200 200))
+  (define-key (current-local-map) [xwidget-event] 'xwidget-quiz-handler))
+
+(defun xwidget-quiz-handler ()
+  (interactive)
+  (message "stuff happend to xwidget %S" last-input-event)
+  (let*
+      ((xwidget-event-type (nth 1 last-input-event))
+       (xwidget (nth 2 last-input-event)))
+    (goto-char (point-max))
+    (insert "\n正解は ×"
+            "Emacs 25では、webkitしか動作しません")
+    ))
 
 
 (provide 'xwidget-quiz)
