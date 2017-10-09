@@ -1,31 +1,38 @@
 []xwidgetで遊ぶ
 [-]
-  
+
+
 []2017/10/28
 []Emacs実践入門 出版記念イベント
 []@grugrut(ぐるっと)
-
+[]
 [][image "icon.PNG" 40]
 
 
 Who are you?
 [-]
-[#]大学1年のときに講義で素のEmacsでJavaのコードを書かされたときにEmacsと出会う
-[#]	こんなエディタ二度と使うものか
+[#]
+大学1年のときに講義で素のEmacsでJavaのコードを書かされたときにEmacsと出会う
+[#]
+	こんなエディタ二度と使うものか
+[#]
+研究室に配属されて、TeXを書くのにEmacsに戻ってくる
+[
+	yatexとhowmは神
 
-[#]研究室に配属されて、TeXを書くのにEmacsに戻ってくる
-[#]	yatexとhowmは神
-
-[#]現在都内SIer勤務
-[#]	org-modeは神
+[#]
+現在都内SIer勤務
+[#]
+	org-modeは神
 
 X Widgetsとは
 [-]
 
-[#]Emacs 25でマージされた
+[#]
+Emacs 25でマージされた
 gtkのWidgetをEmacsのバッファに
 埋め込むことができる機能
-[#] 
+[#]
 Emacs25では、Webブラウザの埋め込みに使われている
 (webkit)
 
@@ -62,9 +69,69 @@ http://grugrut.hatenablog.jp/entry/2016/12/03/123128
 
 (M-x customizeや*Help*でおなじみのあれ)
 
+
+まずは普通のボタン(widget-create)
+[-]
+サンプルソース
+[#]
+(widget-create 'push-button
+               :notify (lambda (&rest ignore)
+                         (message "Pushed widget!!"))
+               "Push me!!")
+(use-local-map widget-keymap)
+(widget-setup)
+[#]
+結構手続が必要
+バッファが変更不可になってしまう
+
+つぎも普通のボタン(make-button)
+[-]
+サンプルソース
+(insert "this is a button.")
+  (make-button 11 17
+               'follow-link t
+               'action '(lambda (button) (goto-char (point-max))
+                          (insert "Pushed button!!\n"))
+[#]
+make-buttonの引数で指定した引数の範囲をボタン化
+[#]
+ボタン化しつつ挿入するinsert-buttonもある
+[#]
+バッファが変更不可にならない
+
+ではX widgetの場合は
+[-]
+サンプルソース
+(xwidget-insert (point-min) 'Button "The button" 200 200)
+(define-key (current-local-map) [xwidget-event] '(lambda ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "Pushed!!")))
+[#]
+ラベルのフォントやサイズは変えれない
+[#]
+内部的には、put-text-propertyでテキストの属性を
+変えてwidgetを表示しているので
+ダミーテキストが必要
 [properties]
-((583 590 0 4 0)
- (590 596 10 4 0)
- (596 603 0 4 0)
- (603 613 10 4 0)
- (614 666 0 4 0))
+((587 594 0 4 0)
+ (594 600 10 4 0)
+ (600 607 0 4 0)
+ (607 617 10 4 0)
+ (618 670 0 4 0)
+ (857 884 0 3 0)
+ (885 930 0 3 0)
+ (931 984 0 3 0)
+ (985 1012 0 3 0)
+ (1013 1042 0 3 0)
+ (1043 1057 0 3 0)
+ (1124 1152 0 3 0)
+ (1153 1173 0 3 0)
+ (1174 1203 0 3 0)
+ (1204 1268 0 3 0)
+ (1269 1324 0 3 0)
+ (1439 1496 0 3 0)
+ (1497 1556 0 3 0)
+ (1557 1572 0 3 0)
+ (1573 1598 0 3 0)
+ (1599 1622 0 3 0))
