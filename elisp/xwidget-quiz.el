@@ -43,7 +43,11 @@
       ((xwidget-event-type (nth 1 last-input-event))
        (xwidget (nth 2 last-input-event)))
     (goto-char (point-max))
-    (insert "\n正解は ×"
+    (insert "\n")
+    (if (eq maru-button xwidget)
+        (insert "不正解 ><\n")
+      (insert "正解 ^^b\n"))
+    (insert "正解は ×\n"
             "Emacs 25では、webkitしか動作しません")
     ))
 
