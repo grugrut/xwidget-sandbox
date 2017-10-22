@@ -43,6 +43,15 @@
                'action '(lambda (button) (goto-char (point-max))
                           (insert "Pushed button!!\n"))))
 
+(require 'xwidget)
+(defun xwidget-insert-example ()
+  "A example function using 'xwidget-insert."
+  (interactive)
+  (switch-to-buffer "*xwidget-example*")
+  (insert "        ")
+  (goto-char (point-min))
+  (xwidget-insert (point) 'Button "Click me" 200 200))
+
 (provide 'widget-button)
 
 ;;; widget-button.el ends here
