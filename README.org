@@ -1,0 +1,16 @@
+* xwidget-sandbox
+
+Emacs実践入門 出版イベントのLT枠で発表した「xwidgetsで遊ぶ」で使用した発表資料群です。
+
+https://shibuya-el.connpass.com/event/66842
+
+** 内容物
+- slide.gby
+ - 発表資料
+ - goby(https://github.com/kazu-yamamoto/Goby)でないと装飾はうまく読めないけど、中身はテキストファイルなんで可読性はあるはず
+- elisp/widget-button.el
+ - スライドで紹介している、widget-create、make-button、xwidget-insertのサンプル実装
+ - xwidget周りはコメントアウトしないと、今のemacsでは動作しないかと思います
+- elisp/xwidget-quiz.el
+ - xwidgetクイズのソース
+ - xwidgetブランチをビルドしないと動かないです
